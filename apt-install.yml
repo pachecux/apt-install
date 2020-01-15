@@ -3,5 +3,7 @@
   become: yes
   gather_facts: False
   tasks:
-  - name: Install python for Ansible
-    raw:  (apt install -y "{{ item }}")
+  - name: Install base packages
+  apt: name={{ item }} state=installed
+  with_items: {{ packages}}
+    
